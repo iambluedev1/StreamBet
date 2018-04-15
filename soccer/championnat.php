@@ -16,7 +16,7 @@ $stream_context = stream_context_create($reqPrefs);
 $response = file_get_contents($uri, false, $stream_context);
 $competitionTable = json_decode($response, true);
 //fixtures competition
-$uri = $teamApiKey.'/fixtures?matchday='.$competition->currentMatchday;
+  $uri = $teamApiKey.'/fixtures?matchday='.$competition->currentMatchday;
 $reqPrefs['http']['method'] = 'GET';
 $reqPrefs['http']['header'] = 'X-Auth-Token: bd9e09e95e8948cc9f6d543c36225d48';
 $stream_context = stream_context_create($reqPrefs);
@@ -36,9 +36,6 @@ include("../include/nav.php");
         <i class="far fa-futbol"></i>
         Matchs - <?php echo $competition->caption; ?>
       </h1>
-      <h2 class="subtitle">
-        Retrouvez le calendrier des Matchs de <?php echo $competition->caption; ?> !
-      </h2>
     </div>
   </div>
   <div class="hero-footer">
@@ -90,20 +87,20 @@ include("../include/nav.php");
                 <div class="columns is-mobile">
                   <div class="column is-1" style="text-align: center;">
                     <i class="far fa-clock"></i>
-                    <hr style="margin: 5px 0px 5px 0px;">
+                    <hr style="margin: 3px 0px 3px 0px;">
                     <a>
                       <i class="far fa-plus-square"></i>
                     </a>
                   </div>
-                  <div class="is-divider-vertical" data-content="" style="padding:0px 5px 0px 5px;"></div>
+                  <div class="is-divider-vertical" data-content="" style="padding:0px 3px 0px 3px;"></div>
                   <div class="column is-8">
-                    <p><strong>'.$competitionFixtures['fixtures'][$pos]['homeTeamName'].'</strong></p>
-                    <hr style="margin: 5px 0px 5px 0px;">
-                    <p><strong>'.$competitionFixtures['fixtures'][$pos]['awayTeamName'].'</strong></p>
+                    <p><a href="../soccer/team.php?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['homeTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['homeTeamName'].'</strong></a></p>
+                    <hr style="margin: 3px 0px 3px 0px;">
+                    <p><a href="../soccer/team.php?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['awayTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['awayTeamName'].'</strong></a></p>
                   </div>
                   <div class="column" style="text-align: center;">
                     <p><time>'.$matchDate.'</time></p>
-                    <hr style="margin: 5px 0px 5px 0px;">
+                    <hr style="margin: 3px 0px 3px 0px;">
                     <p><time>'.$matchHour.'</time></p>
                   </div>
                 </div>
@@ -138,20 +135,20 @@ include("../include/nav.php");
                     <a href="../channel/bein.php" target="_blank">
                       <i class="far fa-play-circle"></i>
                     </a>
-                    <hr style="margin: 5px 0px 5px 0px;">
+                    <hr style="margin: 3px 0px 3px 0px;">
                     <a>
                       <i class="far fa-plus-square"></i>
                     </a>
                   </div>
-                  <div class="is-divider-vertical" data-content="" style="padding:0px 5px 0px 5px;"></div>
-                  <div class="column is-10">
-                    <p class="'.$homeWon.'"><strong>'.$competitionFixtures['fixtures'][$pos]['homeTeamName'].'</strong></p>
-                    <hr style="margin: 5px 0px 5px 0px;">
-                    <p class="'.$awayWon.'"><strong>'.$competitionFixtures['fixtures'][$pos]['awayTeamName'].'</strong></p>
+                  <div class="is-divider-vertical" data-content="" style="padding:0px 3px 0px 3px;"></div>
+                  <div class="column is-8">
+                    <p><a href="../soccer/team.php?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['homeTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['homeTeamName'].'</strong></a></p>
+                    <hr style="margin: 3px 0px 3px 0px;">
+                    <p><a href="../soccer/team.php?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['awayTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['awayTeamName'].'</strong></a></p>
                   </div>
                   <div class="column" style="text-align: center;">
                     <p class="'.$homeWon.'"><strong>'.$homeGoals.'</strong></p>
-                    <hr style="margin: 5px 0px 5px 0px;">
+                    <hr style="margin: 3px 0px 3px 0px;">
                     <p class="'.$awayWon.'"><strong>'.$awayGoals.'</strong></p>
                   </div>
                 </div>
@@ -184,20 +181,20 @@ include("../include/nav.php");
                 <div class="columns is-mobile">
                   <div class="column is-1" style="text-align: center;">
                     <i class="far fa-check-circle"></i>
-                    <hr style="margin: 5px 0px 5px 0px;">
+                    <hr style="margin: 3px 0px 3px 0px;">
                     <a>
                       <i class="far fa-plus-square"></i>
                     </a>
                   </div>
-                  <div class="is-divider-vertical" data-content="" style="padding:0px 5px 0px 5px;"></div>
-                  <div class="column is-10">
-                    <p class="'.$homeWon.'"><strong>'.$competitionFixtures['fixtures'][$pos]['homeTeamName'].'</strong></p>
-                    <hr style="margin: 5px 0px 5px 0px;">
-                    <p class="'.$awayWon.'"><strong>'.$competitionFixtures['fixtures'][$pos]['awayTeamName'].'</strong></p>
+                  <div class="is-divider-vertical" data-content="" style="padding:0px 3px 0px 3px;"></div>
+                  <div class="column is-8">
+                    <p><a href="../soccer/team.php?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['homeTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['homeTeamName'].'</strong></a></p>
+                    <hr style="margin: 3px 0px 3px 0px;">
+                    <p><a href="../soccer/team.php?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['awayTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['awayTeamName'].'</strong></a></p>
                   </div>
                   <div class="column" style="text-align: center;">
                     <p class="'.$homeWon.'"><strong>'.$homeGoals.'</strong></p>
-                    <hr style="margin: 5px 0px 5px 0px;">
+                    <hr style="margin: 3px 0px 3px 0px;">
                     <p class="'.$awayWon.'"><strong>'.$awayGoals.'</strong></p>
                   </div>
                 </div>

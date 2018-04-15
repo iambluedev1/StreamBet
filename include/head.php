@@ -11,6 +11,6 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Titillium+Web:400,700" rel="stylesheet">
     <link rel="stylesheet" href="/css/bulma.css">
     <link rel="stylesheet" href="/css2/bulma.css">
-    <link rel="icon" href="img/icon.png">
+    <link rel="icon" href="../img/favicon.png">
   </head>
   <body class="is-fixed-top">

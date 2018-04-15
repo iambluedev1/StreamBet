@@ -33,7 +33,8 @@ include("../include/nav.php");
         <div class="column is-one-quarter">
           <div class="notification">
             <button class="delete"></button>
-            <strong>Publicité</strong>
+            Cliquez sur la croix bleue pour supprimer les pubs.
+            Attention, les premières fois que vous cliquez, vous serez redirigé sur un autre onglet.
           </div>
         </div>
         <div class="column">
@@ -48,7 +49,8 @@ include("../include/nav.php");
         <div class="column is-one-quarter">
           <div class="notification">
             <button class="delete"></button>
-            <strong>Publicité</strong>
+            Cliquez sur la croix bleue pour supprimer les pubs.
+            Attention, les premières fois que vous cliquez, vous serez redirigé sur un autre onglet.
           </div>
         </div>
         <div class="column">
@@ -62,7 +64,8 @@ include("../include/nav.php");
         <div class="column is-one-quarter">
           <div class="notification">
             <button class="delete"></button>
-            <strong>Publicité</strong>
+            Cliquez sur la croix bleue pour supprimer les pubs.
+            Attention, les premières fois que vous cliquez, vous serez redirigé sur un autre onglet.
           </div>
         </div>
         <div class="column">
