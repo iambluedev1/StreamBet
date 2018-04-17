@@ -2,8 +2,8 @@
 $pageTitle = "Index";
 $pageDesc = 'Toutes les infos du foot en streaming !';
 
-include("include/head.php");
-include("include/nav.php");
+include("_include/head.php");
+include("_include/nav.php");
 ?>
 <section class="hero is-large has-carousel is-hidden-mobile">
   <div class="hero-body" style="z-index: 2;">
@@ -66,7 +66,7 @@ include("include/nav.php");
   </div>
 </div>
 <?php
-include('include/footer.php');
+include('_include/footer.php');
 ?>
 </section>
 <script>

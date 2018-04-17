@@ -21,8 +21,8 @@ $matchDate = $matchDate = date('d/m/y - H:i', strtotime($fixture->fixture->date)
 $pageTitle = $matchName;
 $pageDesc = 'Toutes les infos sur le match '.$matchName;
 
-include("../include/head.php");
-include("../include/nav.php");
+include("../_include/head.php");
+include("../_include/nav.php");
 ?>
 <section class="hero is-primary has-fade-in" style="padding-top: 50px;">
   <div class="container">

@@ -25,8 +25,8 @@ $teamFixtures = json_decode($response, true);
 $pageTitle = $team->name;;
 $pageDesc = 'Toutes les infos de '.$team->code;
 
-include("../include/head.php");
-include("../include/nav.php");
+include("../_include/head.php");
+include("../_include/nav.php");
 ?>
 <section class="hero is-primary has-fade-in" style="padding-top: 50px;">
   <div class="hero-body">
@@ -350,3 +350,4 @@ include("../include/nav.php");
     </div>
   </div>
 </section>
+<?php include("../_include/footer.php"); ?>

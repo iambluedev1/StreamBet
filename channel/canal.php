@@ -2,8 +2,8 @@
 $pageTitle = "Streaming Canal +, Canal + Sport";
 $pageDesc = "Streaming Gratuit 24/7 Canal +, Canal + Sport";
 
-include("../include/head.php");
-include("../include/nav.php");
+include("../_include/head.php");
+include("../_include/nav.php");
 ?>
 <section class="hero is-success has-fade-in" style="padding-top: 50px;">
   <div class="hero-body">
@@ -60,6 +60,10 @@ include("../include/nav.php");
     </div>
   </div>
 </section>
+<br>
+<?php
+include("../_include/footer.php");
+?>
 <script>
   function switchCatTab(type) {
       removeActive();

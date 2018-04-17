@@ -13,8 +13,10 @@ if (in_array($soccerSeasonID, $championshipsID, true )) {
 }elseif (in_array($soccerSeasonID, $cupsID, true )) {
   include('../soccer/coupe.php');
 }else {
-  include('../errors/404.php');
+  include('../_errors/404.php');
 }
-
-include('../include/footer.php');
+?>
+<br>
+<?php
+include('../_include/footer.php');
  ?>

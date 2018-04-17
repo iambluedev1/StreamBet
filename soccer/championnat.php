@@ -37,8 +37,8 @@ $competitionTeams = json_decode($response, true);
 $pageTitle = $competition->caption;
 $pageDesc = 'Toutes les infos des matchs de '.$competition->caption;
 
-include("../include/head.php");
-include("../include/nav.php");
+include("../_include/head.php");
+include("../_include/nav.php");
 ?>
 <section class="hero is-primary has-fade-in" style="padding-top: 50px;">
   <div class="hero-body">
