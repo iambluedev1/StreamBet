@@ -2,8 +2,8 @@
 $pageTitle = "Streaming Beinsport 1, 2 et 3";
 $pageDesc = "Streaming Gratuit 24/7 Beinsport 1, 2 et 3";
 
-include("../include/head.php");
-include("../include/nav.php");
+include("../_include/head.php");
+include("../_include/nav.php");
 ?>
 <section class="hero is-success has-fade-in" style="padding-top: 50px;">
   <div class="hero-body">
@@ -17,7 +17,7 @@ include("../include/nav.php");
     </div>
   </div>
   <div class="hero-foot">
-    <div class="tabs is-centered is-boxed">
+    <div class="tabs is-centered is-boxed is-medium">
       <ul>
         <li id="bein1-tab" class="is-active"><a onclick="switchCatTab('bein1')">Beinsport 1</a></li>
         <li id="bein2-tab"><a onclick="switchCatTab('bein2')">Beinsport 2</a></li>
@@ -33,7 +33,8 @@ include("../include/nav.php");
         <div class="column is-one-quarter">
           <div class="notification">
             <button class="delete"></button>
-            <strong>Publicité</strong>
+            Cliquez sur la croix bleue pour supprimer les pubs.
+            Attention, les premières fois que vous cliquez, vous serez redirigé sur un autre onglet.
           </div>
         </div>
         <div class="column">
@@ -48,7 +49,8 @@ include("../include/nav.php");
         <div class="column is-one-quarter">
           <div class="notification">
             <button class="delete"></button>
-            <strong>Publicité</strong>
+            Cliquez sur la croix bleue pour supprimer les pubs.
+            Attention, les premières fois que vous cliquez, vous serez redirigé sur un autre onglet.
           </div>
         </div>
         <div class="column">
@@ -62,7 +64,8 @@ include("../include/nav.php");
         <div class="column is-one-quarter">
           <div class="notification">
             <button class="delete"></button>
-            <strong>Publicité</strong>
+            Cliquez sur la croix bleue pour supprimer les pubs.
+            Attention, les premières fois que vous cliquez, vous serez redirigé sur un autre onglet.
           </div>
         </div>
         <div class="column">
@@ -74,6 +77,10 @@ include("../include/nav.php");
     </div>
   </div>
 </section>
+<br>
+<?php
+include("../_include/footer.php");
+?>
 <script>
   function switchCatTab(type) {
       removeActive();
