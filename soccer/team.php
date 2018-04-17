@@ -65,9 +65,11 @@ include("../include/nav.php");
               <div class="box">
                 <div class="columns is-mobile">
                   <div class="column is-1" style="text-align: center;">
-                    <i class="far fa-clock"></i>
+                    <a class="tooltip" data-tooltip="Match à venir">
+                      <i class="far fa-clock"></i>
+                    </a>
                     <hr style="margin: 3px 0px 3px 0px;">
-                    <a href="../soccer/fixture.php?fixtureID='.$teamFixtures['fixtures'][$pos]['_links']['self']['href'].'">
+                    <a href="../soccer/fixture.php?fixtureID='.$teamFixtures['fixtures'][$pos]['_links']['self']['href'].'" class="tooltip" data-tooltip="Plus">
                       <i class="far fa-plus-square"></i>
                     </a>
                   </div>
@@ -115,7 +117,7 @@ include("../include/nav.php");
                       <i class="far fa-play-circle"></i>
                     </a>
                     <hr style="margin: 3px 0px 3px 0px;">
-                    <a href="../soccer/fixture.php?fixtureID='.$teamFixtures['fixtures'][$pos]['_links']['self']['href'].'">
+                    <a href="../soccer/fixture.php?fixtureID='.$teamFixtures['fixtures'][$pos]['_links']['self']['href'].'" class="tooltip" data-tooltip="Plus">
                       <i class="far fa-plus-square"></i>
                     </a>
                   </div>
@@ -129,6 +131,34 @@ include("../include/nav.php");
                     <p class="'.$homeWon.'"><strong>'.$homeGoals.'</strong></p>
                     <hr style="margin: 3px 0px 3px 0px;">
                     <p class="'.$awayWon.'"><strong>'.$awayGoals.'</strong></p>
+                  </div>
+                </div>
+              </div>';
+            }elseif ($teamFixtures['fixtures'][$pos]['status'] === 'SCHEDULED') {
+              $matchDate = date('d/m', strtotime($teamFixtures['fixtures'][$pos]['date']));
+              $matchHour = date('H:i', strtotime($teamFixtures['fixtures'][$pos]['date']));
+              echo '
+              <div class="box">
+                <div class="columns is-mobile">
+                  <div class="column is-1" style="text-align: center;">
+                    <a class="tooltip" data-tooltip="Match à venir">
+                      <i class="far fa-clock"></i>
+                    </a>
+                    <hr style="margin: 3px 0px 3px 0px;">
+                    <a href="../soccer/fixture.php?fixtureID='.$teamFixtures['fixtures'][$pos]['_links']['self']['href'].'" class="tooltip" data-tooltip="Plus">
+                      <i class="far fa-plus-square"></i>
+                    </a>
+                  </div>
+                  <div class="is-divider-vertical" data-content="" style="padding:0px 3px 0px 3px;"></div>
+                  <div class="column is-8">
+                  <a href="../soccer/team.php?teamID='.$teamFixtures['fixtures'][$pos]['_links']['homeTeam']['href'].'"><p><strong>'.$teamFixtures['fixtures'][$pos]['homeTeamName'].'</p></strong></a>
+                  <hr style="margin: 3px 0px 3px 0px;">
+                  <a href="../soccer/team.php?teamID='.$teamFixtures['fixtures'][$pos]['_links']['awayTeam']['href'].'"><p><strong>'.$teamFixtures['fixtures'][$pos]['awayTeamName'].'</p></strong></a>
+                  </div>
+                  <div class="column" style="text-align: center;">
+                    <p><time>'.$matchDate.'</time></p>
+                    <hr style="margin: 3px 0px 3px 0px;">
+                    <p><time>'.$matchHour.'</time></p>
                   </div>
                 </div>
               </div>';
@@ -154,7 +184,7 @@ include("../include/nav.php");
                   <div class="column is-1" style="text-align: center;">
                     <i class="far fa-clock"></i>
                     <hr style="margin: 3px 0px 3px 0px;">
-                    <a href="../soccer/fixture.php?fixtureID='.$teamFixtures['fixtures'][$pos]['_links']['self']['href'].'">
+                    <a href="../soccer/fixture.php?fixtureID='.$teamFixtures['fixtures'][$pos]['_links']['self']['href'].'" class="tooltip" data-tooltip="Plus">
                       <i class="far fa-plus-square"></i>
                     </a>
                   </div>
@@ -202,7 +232,7 @@ include("../include/nav.php");
                       <i class="far fa-play-circle"></i>
                     </a>
                     <hr style="margin: 3px 0px 3px 0px;">
-                    <a href="../soccer/fixture.php?fixtureID='.$teamFixtures['fixtures'][$pos]['_links']['self']['href'].'">
+                    <a href="../soccer/fixture.php?fixtureID='.$teamFixtures['fixtures'][$pos]['_links']['self']['href'].'" class="tooltip" data-tooltip="Plus">
                       <i class="far fa-plus-square"></i>
                     </a>
                   </div>
@@ -248,7 +278,7 @@ include("../include/nav.php");
                   <div class="column is-1" style="text-align: center;">
                     <i class="far fa-check-circle"></i>
                     <hr style="margin: 3px 0px 3px 0px;">
-                    <a href="../soccer/fixture.php?fixtureID='.$teamFixtures['fixtures'][$pos]['_links']['self']['href'].'">
+                    <a href="../soccer/fixture.php?fixtureID='.$teamFixtures['fixtures'][$pos]['_links']['self']['href'].'" class="tooltip" data-tooltip="Plus">
                       <i class="far fa-plus-square"></i>
                     </a>
                   </div>

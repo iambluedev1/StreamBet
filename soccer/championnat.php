@@ -1,5 +1,8 @@
 <?php
 $soccerSeasonID = htmlspecialchars($_GET['soccerSeasonID']);
+
+
+
 $teamApiKey = 'http://api.football-data.org/v1/competitions/'.$soccerSeasonID;
 //competition
 $uri = $teamApiKey;
@@ -16,12 +19,20 @@ $stream_context = stream_context_create($reqPrefs);
 $response = file_get_contents($uri, false, $stream_context);
 $competitionTable = json_decode($response, true);
 //fixtures competition
-  $uri = $teamApiKey.'/fixtures?matchday='.$competition->currentMatchday;
+$uri = $teamApiKey.'/fixtures?matchday='.$competition->currentMatchday;
 $reqPrefs['http']['method'] = 'GET';
 $reqPrefs['http']['header'] = 'X-Auth-Token: bd9e09e95e8948cc9f6d543c36225d48';
 $stream_context = stream_context_create($reqPrefs);
 $response = file_get_contents($uri, false, $stream_context);
 $competitionFixtures = json_decode($response, true);
+
+//équipes competition
+$uri = $teamApiKey.'/teams';
+$reqPrefs['http']['method'] = 'GET';
+$reqPrefs['http']['header'] = 'X-Auth-Token: bd9e09e95e8948cc9f6d543c36225d48';
+$stream_context = stream_context_create($reqPrefs);
+$response = file_get_contents($uri, false, $stream_context);
+$competitionTeams = json_decode($response, true);
 
 $pageTitle = $competition->caption;
 $pageDesc = 'Toutes les infos des matchs de '.$competition->caption;
@@ -33,12 +44,12 @@ include("../include/nav.php");
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        <i class="far fa-futbol"></i>
+        <i class="fas fa-trophy"></i>
         <?php echo $competition->caption; ?>
       </h1>
     </div>
   </div>
-  <div class="hero-footer">
+  <div class="hero-foot">
     <div class="container">
       <nav class="level is-mobile">
         <div class="level-item has-text-centered">
@@ -63,32 +74,53 @@ include("../include/nav.php");
       <div class="container">
         <progress class="progress" value="<?php echo $competition->currentMatchday ?>" max="<?php echo $competition->numberOfMatchdays ?>"></progress>
       </div>
+      <br>
+      <div class="tabs is-centered is-boxed">
+        <ul>
+          <li id="matchs-tab" class="is-active">
+            <a onclick="switchCatTab('matchs')">
+              <span class="icon is-small"><i class="fas fa-futbol"></i></span>
+              <span>Matchs</span>
+            </a>
+          </li>
+          <li id="leagueTable-tab">
+            <a onclick="switchCatTab('leagueTable')">
+              <span class="icon is-small"><i class="fas fa-trophy"></i></span>
+              <span>Classement</span>
+            </a>
+          </li>
+          <li id="teams-tab">
+              <a onclick="switchCatTab('teams')">
+                <span class="icon is-small"><i class="fas fa-shield-alt"></i></span>
+                <span>Equipes</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <br>
-    <br>
-  </div>
-</section>
+  </section>
 <section class="container">
   <br>
-  <div class="columns">
-    <div class="column">
-      <article class="message is-dark">
-        <div class="message-header">
-          <h1 class="title is-4 has-text-white">Matchs de la Journée:</h1>
-        </div>
-        <div class="message-body">
-          <?php
-          for ($pos=0; $pos < $competitionFixtures['count']; $pos++) {
-            if ($competitionFixtures['fixtures'][$pos]['status'] === 'TIMED') {
+  <article id="matchs" class="message is-dark">
+    <div class="message-header">
+      <h1 class="title is-4 has-text-white">Matchs de la Journée:</h1>
+    </div>
+    <div class="message-body">
+      <?php
+        for ($pos=0; $pos < $competitionFixtures['count']; $pos++) {
+          if ($competitionFixtures['fixtures'][$pos]['status'] === 'TIMED') {
               $matchDate = date('d/m', strtotime($competitionFixtures['fixtures'][$pos]['date']));
               $matchHour = date('H:i', strtotime($competitionFixtures['fixtures'][$pos]['date']));
               echo '
               <div class="box">
                 <div class="columns is-mobile">
                   <div class="column is-1" style="text-align: center;">
-                    <i class="far fa-clock"></i>
+                    <a class="tooltip" data-tooltip="Match à venir">
+                      <i class="far fa-clock"></i>
+                    </a>
                     <hr style="margin: 3px 0px 3px 0px;">
-                    <a href="../soccer/fixture.php?fixtureID='.$competitionFixtures['fixtures'][$pos]['_links']['self']['href'].'">
+                    <a href="../soccer/fixture.php?fixtureID='.$competitionFixtures['fixtures'][$pos]['_links']['self']['href'].'" class="tooltip" data-tooltip="Plus">
                       <i class="far fa-plus-square"></i>
                     </a>
                   </div>
@@ -132,11 +164,11 @@ include("../include/nav.php");
               <div class="box">
                 <div class="columns is-mobile">
                   <div class="column is-1" style="text-align: center;">
-                    <a href="../channel/bein.php" target="_blank">
+                    <a href="../channel/bein.php" target="_blank" class="tooltip" data-tooltip="Regarder le match">
                       <i class="far fa-play-circle"></i>
                     </a>
                     <hr style="margin: 3px 0px 3px 0px;">
-                    <a href="../soccer/fixture.php?fixtureID='.$competitionFixtures['fixtures'][$pos]['_links']['self']['href'].'">
+                    <a href="../soccer/fixture.php?fixtureID='.$competitionFixtures['fixtures'][$pos]['_links']['self']['href'].'" class="tooltip" data-tooltip="Plus">
                       <i class="far fa-plus-square"></i>
                     </a>
                   </div>
@@ -180,11 +212,11 @@ include("../include/nav.php");
               <div class="box">
                 <div class="columns is-mobile">
                   <div class="column is-1" style="text-align: center;">
-                    <a href="../channel/bein.php" target="_blank">
+                    <a class="tooltip" data-tooltip="Match Terminé">
                       <i class="far fa-check-circle"></i>
                     </a>
                     <hr style="margin: 3px 0px 3px 0px;">
-                    <a href="../soccer/fixture.php?fixtureID='.$competitionFixtures['fixtures'][$pos]['_links']['self']['href'].'">
+                    <a href="../soccer/fixture.php?fixtureID='.$competitionFixtures['fixtures'][$pos]['_links']['self']['href'].'" class="tooltip" data-tooltip="Plus">
                       <i class="far fa-plus-square"></i>
                     </a>
                   </div>
@@ -203,11 +235,43 @@ include("../include/nav.php");
               </div>';
             }
           }
-            ?>
+          ?>
           </div>
-        </div>
-        <div class="column">
-          <article class="message is-dark">
+        </article>
+        <article id="teams" class="message is-dark hidden">
+          <div class="message-header">
+            <h1 class="title is-4 has-text-white">Equipes</h1>
+          </div>
+          <div class="message-body">
+            <?php
+              $teamCount = $competitionTeams['count'];
+              for ($pos=0; $pos < $teamCount; $pos++) {
+                echo '
+                  <article class="media">
+                    <a href="../soccer/team.php?teamID='.$competitionTeams['teams'][$pos]['_links']['self']['href'].'">
+                      <figure class="media-left">
+                        <p class="image is-32x32">
+                          <img src="'.$competitionTeams['teams'][$pos]['crestUrl'].'">
+                        </p>
+                      </figure>
+                      <div class="media-content">
+                        <div class="content">
+                          <p>
+                            <a href="../soccer/team.php?teamID='.$competitionTeams['teams'][$pos]['_links']['self']['href'].'"><strong>'.$competitionTeams['teams'][$pos]['name'].'</strong></a>
+                            <br>
+                            <small>'.$competitionTeams['teams'][$pos]['code'].' - '.$competitionTeams['teams'][$pos]['shortName'].'</small>
+                            <br>
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                  </article>
+                  ';
+                }
+              ?>
+            </div>
+          </article>
+          <article id="leagueTable" class="message is-dark hidden">
             <div class="message-header">
               <h1 class="title is-4 has-text-white">Classement:</h1>
             </div>
@@ -218,12 +282,12 @@ include("../include/nav.php");
                     <th>Pos</th>
                     <th>Equipe</th>
                     <th>Joués</th>
-                    <th>V</th>
-                    <th>N</th>
-                    <th>D</th>
-                    <th>GM</th>
-                    <th>GE</th>
-                    <th>GA</th>
+                    <th>Victoires</th>
+                    <th>Nuls</th>
+                    <th>Défaites</th>
+                    <th>Goals Marqués</th>
+                    <th>Goals Encaissés</th>
+                    <th>Goal Average</th>
                     <th>Points</th>
                   </tr>
                 </thead>
@@ -232,12 +296,12 @@ include("../include/nav.php");
                     <th>Pos</th>
                     <th>Equipe</th>
                     <th>Joués</th>
-                    <th>V</th>
-                    <th>N</th>
-                    <th>D</th>
-                    <th>M</th>
-                    <th>E</th>
-                    <th>GA</th>
+                    <th>Victoires</th>
+                    <th>Nuls</th>
+                    <th>Défaites</th>
+                    <th>Goals Marqués</th>
+                    <th>Goals Encaissés</th>
+                    <th>Goal Average</th>
                     <th>Points</th>
                   </tr>
                 </tfoot>
@@ -248,7 +312,7 @@ include("../include/nav.php");
                     echo '
                     <tr>
                       <th>'.$competitionTable['standing'][$pos]['position'].'</th>
-                      <td>'.$competitionTable['standing'][$pos]['teamName'].'</td>
+                      <td><a href="../soccer/team.php?teamID='.$competitionTable['standing'][$pos]['_links']['team']['href'].'">'.$competitionTable['standing'][$pos]['teamName'].'</a></td>
                       <td>'.$competitionTable['standing'][$pos]['playedGames'].'</td>
                       <td>'.$competitionTable['standing'][$pos]['wins'].'</td>
                       <td>'.$competitionTable['standing'][$pos]['draws'].'</td>
@@ -266,19 +330,17 @@ include("../include/nav.php");
               <table class="table is-striped is-hoverable is-hidden-desktop">
                 <thead>
                   <tr>
+                    <th>Pos</th>
                     <th>Equipe</th>
-                    <th>V</th>
-                    <th>N</th>
-                    <th>D</th>
+                    <th>V:N:D</th>
                     <th>Points</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
+                    <th>Pos</th>
                     <th>Equipe</th>
-                    <th>V</th>
-                    <th>N</th>
-                    <th>D</th>
+                    <th>V:N:D</th>
                     <th>Points</th>
                   </tr>
                 </tfoot>
@@ -288,10 +350,9 @@ include("../include/nav.php");
                   for ($pos=0; $pos < $competition->numberOfTeams; $pos++) {
                     echo '
                     <tr>
-                      <td>'.$competitionTable['standing'][$pos]['teamName'].'</td>
-                      <td>'.$competitionTable['standing'][$pos]['wins'].'</td>
-                      <td>'.$competitionTable['standing'][$pos]['draws'].'</td>
-                      <td>'.$competitionTable['standing'][$pos]['losses'].'</td>
+                      <th>'.$competitionTable['standing'][$pos]['position'].'</th>
+                      <td><a href="../soccer/team.php?teamID='.$competitionTable['standing'][$pos]['_links']['team']['href'].'">'.$competitionTable['standing'][$pos]['teamName'].'</a></td>
+                      <td>'.$competitionTable['standing'][$pos]['wins'].':'.$competitionTable['standing'][$pos]['draws'].':'.$competitionTable['standing'][$pos]['losses'].'</td>
                       <td>'.$competitionTable['standing'][$pos]['points'].'</td>
                     </tr>';
                   }
@@ -300,7 +361,33 @@ include("../include/nav.php");
               </table>
           </article>
         </div>
-    </div>
-  </div>
 </section>
-<script type="text/javascript" src="/node_modules/bulma-extensions/bulma-accordion/dist/bulma-accordion.min.js"></script>
+<script>
+  function switchCatTab(type) {
+      removeActive();
+      hideAllCat();
+      $(`#${type}-tab`).addClass("is-active");
+      $(`#${type}`).removeClass("hidden");
+  }
+
+  function switchTab(type) {
+      removeActive();
+      hideAllCat();
+      $("#list-content").addClass("hidden");
+      $("#add-content").addClass("hidden");
+      $(`#${type}-tab`).addClass("is-active");
+      $(`#${type}`).removeClass("hidden");
+  }
+
+  function removeActive() {
+      $("li").each(function() {
+      $(this).removeClass("is-active");
+      });
+  }
+
+  function hideAllCat() {
+      $("#teams").addClass("hidden");
+      $("#leagueTable").addClass("hidden");
+      $("#matchs").addClass("hidden");
+  }
+</script>

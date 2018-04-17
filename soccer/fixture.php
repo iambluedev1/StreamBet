@@ -7,6 +7,13 @@ $reqPrefs['http']['header'] = 'X-Auth-Token: bd9e09e95e8948cc9f6d543c36225d48';
 $stream_context = stream_context_create($reqPrefs);
 $response = file_get_contents($uri, false, $stream_context);
 $fixture = json_decode($response);
+//Competition
+$uri = $fixture->fixture->_links->competition->href;
+$reqPrefs['http']['method'] = 'GET';
+$reqPrefs['http']['header'] = 'X-Auth-Token: bd9e09e95e8948cc9f6d543c36225d48';
+$stream_context = stream_context_create($reqPrefs);
+$response = file_get_contents($uri, false, $stream_context);
+$competiton = json_decode($response);
 //Variables
 $matchName = $fixture->fixture->homeTeamName.' - '.$fixture->fixture->awayTeamName;
 $matchDate = $matchDate = date('d/m/y - H:i', strtotime($fixture->fixture->date));
@@ -18,21 +25,21 @@ include("../include/head.php");
 include("../include/nav.php");
 ?>
 <section class="hero is-primary has-fade-in" style="padding-top: 50px;">
-  <div class="hero-body">
-    <h1 class="title is-3">
-      <?php echo $fixture->fixture->homeTeamName.' - '.$fixture->fixture->awayTeamName; ?>
-    </h1>
-    <h1 class="subtitle is-4">
-      <?php echo $matchDate; ?>
-    </h1>
-  </div>
-  <div class="hero-footer">
-    <div class="container">
-      <nav class="level is-mobile">
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="heading">Statut :</p>
-            <p class="title"><?php
+  <div class="container">
+    <div class="hero-body">
+      <h1 class="title is-3">
+        <?php echo $fixture->fixture->homeTeamName.' - '.$fixture->fixture->awayTeamName; ?>
+      </h1>
+      <h1 class="subtitle is-4">
+        <?php echo $matchDate.' - <a href="http://localhost/soccer/championnat.php?soccerSeasonID='.$competiton->id.'">'.$competiton->caption.'</a>'; ?>
+      </h1>
+    </div>
+    <div class="hero-footer">
+        <nav class="level is-mobile">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Statut :</p>
+              <p class="title"><?php
             if ($fixture->fixture->status === "FINISHED"){
               echo 'Terminé';
             }elseif ($fixture->fixture->status === "IN_PLAY"){
@@ -41,9 +48,9 @@ include("../include/nav.php");
               echo 'Prévu.';
             }
              ?></p>
-          </div>
-        </div>
-        <div class="level-item has-text-centered">
+           </div>
+         </div>
+         <div class="level-item has-text-centered">
           <div>
             <p class="heading">Score :</p>
             <p class="title"><?php echo $fixture->fixture->result->goalsHomeTeam.' - '.$fixture->fixture->result->goalsAwayTeam ?></p>
@@ -128,11 +135,11 @@ include("../include/nav.php");
               <div class="box">
               <div class="columns is-mobile">
               <div class="column is-1" style="text-align: center;">
-                <a href="../channel/bein.php" target="_blank">
+                <a target="_blank" class="tooltip" data-tooltip="Match terminé">
                   <i class="far fa-check-circle"></i>
                 </a>
                 <hr style="margin: 3px 0px 3px 0px;">
-                <a href="../soccer/fixture.php?fixtureID='.$fixture->head2head->lastWinHomeTeam->_links->self->href.'">
+                <a href="../soccer/fixture.php?fixtureID='.$fixture->head2head->lastWinHomeTeam->_links->self->href.'" class="tooltip" data-tooltip="Plus">
                   <i class="far fa-plus-square"></i>
                 </a>
               </div>
@@ -155,7 +162,7 @@ include("../include/nav.php");
             </div>
             </div>';
           }else {
-            echo '<p><strong>Cette équipe n\'a jamais remporté ce matchs durant les '.$count.' derniers</strong></p><br>';
+            echo '<p><strong>Cette équipe n\'a jamais remporté ce match durant les '.$count.' derniers</strong></p><br>';
           } ?>
         <h1 class="title is-5">Dernière victoire à Domicile</h1>
         <?php
@@ -188,11 +195,11 @@ include("../include/nav.php");
           <div class="box">
           <div class="columns is-mobile">
             <div class="column is-1" style="text-align: center;">
-              <a href="../channel/bein.php" target="_blank">
+              <a class="tooltip" data-tooltip="Match terminé">
                 <i class="far fa-check-circle"></i>
               </a>
               <hr style="margin: 3px 0px 3px 0px;">
-              <a href="../soccer/fixture.php?fixtureID='.$fixture->head2head->lastWinHomeTeam->_links->self->href.'">
+              <a href="../soccer/fixture.php?fixtureID='.$fixture->head2head->lastWinHomeTeam->_links->self->href.'" class="tooltip" data-tooltip="Plus">
                 <i class="far fa-plus-square"></i>
               </a>
             </div>
@@ -215,7 +222,7 @@ include("../include/nav.php");
           </div>
           </div>';
         }else {
-          echo '<p><strong>Cette équipe n\'a jamais remporté ce matchs durant les '.$count.' derniers</strong></p><br>';
+          echo '<p><strong>Cette équipe n\'a jamais remporté ce match durant les '.$count.' derniers</strong></p><br>';
         } ?>
       </div>
     </article>
@@ -255,11 +262,11 @@ include("../include/nav.php");
           <div class="box">
             <div class="columns">
               <div class="column is-1" style="text-align: center;">
-                <a href="../channel/bein.php" target="_blank">
+                <a class="is-tooltip-top" data-tooltip="Match terminé">
                   <i class="far fa-check-circle"></i>
                 </a>
                 <hr style="margin: 3px 0px 3px 0px;">
-                <a href="../soccer/fixture.php?fixtureID='.$fixture->head2head->lastWinAwayTeam->_links->self->href.'">
+                <a href="../soccer/fixture.php?fixtureID='.$fixture->head2head->lastWinAwayTeam->_links->self->href.'" class="tooltip" data-tooltip="Plus">
                   <i class="far fa-plus-square"></i>
                 </a>
               </div>
@@ -282,7 +289,7 @@ include("../include/nav.php");
             </div>
           </div>';
         }else {
-          echo '<p><strong>Cette équipe n\'a jamais remporté ce matchs durant les '.$count.' derniers</strong></p><br>';
+          echo '<p><strong>Cette équipe n\'a jamais remporté ce match durant les '.$count.' derniers</strong></p><br>';
         } ?>
         <h1 class="title is-5">Dernière victoire à l'exterieur</h1>
         <?php
@@ -315,11 +322,11 @@ include("../include/nav.php");
           <div class="box">
             <div class="columns">
               <div class="column is-1" style="text-align: center;">
-                <a href="../channel/bein.php" target="_blank">
+                <a class="tooltip" data-tooltip="Match terminé">
                   <i class="far fa-check-circle"></i>
                 </a>
                 <hr style="margin: 3px 0px 3px 0px;">
-                <a href="../soccer/fixture.php?fixtureID='.$fixture->head2head->lastAwayWinAwayTeam->_links->self->href.'">
+                <a href="../soccer/fixture.php?fixtureID='.$fixture->head2head->lastAwayWinAwayTeam->_links->self->href.'" class="tooltip" data-tooltip="Plus">
                   <i class="far fa-plus-square"></i>
                 </a>
               </div>
@@ -342,7 +349,7 @@ include("../include/nav.php");
             </div>
           </div>';
         }else {
-          echo '<p><strong>Cette équipe n\'a jamais remporté ce matchs durant les '.$count.' derniers</strong></p><br>';
+          echo '<p><strong>Cette équipe n\'a jamais remporté ce match durant les '.$count.' derniers</strong></p><br>';
         } ?>
       </div>
     </article>

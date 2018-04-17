@@ -17,7 +17,7 @@ include("../include/nav.php");
     </div>
   </div>
   <div class="hero-foot">
-    <div class="tabs is-centered is-boxed">
+    <div class="tabs is-centered is-boxed is-medium">
       <ul>
         <li id="bein1-tab" class="is-active"><a onclick="switchCatTab('bein1')">Beinsport 1</a></li>
         <li id="bein2-tab"><a onclick="switchCatTab('bein2')">Beinsport 2</a></li>
