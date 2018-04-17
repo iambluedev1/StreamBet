@@ -1,8 +1,8 @@
 <?php
 $pageTitle = 'Cette page n\'existe pas !';
 
-include('../include/head.php');
-include('../include/nav.php');
+include('../_include/head.php');
+include('../_include/nav.php');
  ?>
  <section class="hero is-danger" style="padding-top: 50px;">
    <div class="hero-body">

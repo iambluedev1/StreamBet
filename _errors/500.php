@@ -1,8 +1,8 @@
 <?php
 $pageTitle = 'Merci d\'actualiser la page.';
 
-include('../include/head.php');
-include('../include/nav.php');
+include('../_include/head.php');
+include('../_include/nav.php');
  ?>
  <section class="hero is-danger" style="padding-top: 50px;">
    <div class="hero-body">
