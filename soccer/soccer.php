@@ -66,24 +66,13 @@ if (!empty($_GET['coupe'])){
       break;
   }
 }
-if (!empty($_GET['team'])){
-  $coupe = htmlspecialchars($_GET['coupe']);
-  switch ($coupe) {
-    case 'champions-league':
-      $soccerSeasonID = '464';
-      break;
-    case 'coupe-du-monde':
-      $soccerSeasonID = '467';
-      break;
-  }
-}
 
 if (in_array($soccerSeasonID, $championshipsID, true )) {
   include('../soccer/championship.php');
 }elseif (in_array($soccerSeasonID, $cupsID, true )) {
   include('../soccer/cup.php');
 }else {
-  echo 'error';
+  include('../_errors/404.php');
 }
 ?>
 <br>
