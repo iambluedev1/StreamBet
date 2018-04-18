@@ -42,7 +42,7 @@ include("_include/nav.php");
             <i class="fas fa-video fa-7x"></i><br><br>
             <h1 class="title is-4">Streaming</h1>
             <h1 class="subtitle is-4">Regardez tout les matchs en streaming 100% gratuitement !</h1>
-            <a href="channel/bein.php" class="button is-medium is-success is-outlined is-rounded"><i class="fas fa-plus"></i>&nbsp;Voir</i></a>
+            <a href="channel/bein" class="button is-medium is-success is-outlined is-rounded"><i class="fas fa-plus"></i>&nbsp;Voir</i></a>
           </div>
         </div>
         <div class="column">
@@ -50,7 +50,7 @@ include("_include/nav.php");
             <i class="fas fa-trophy fa-7x"></i><br><br>
             <h1 class="title is-4">Competitions</h1>
             <h1 class="subtitle is-4">Retrouvez vos competitions préférées et tout les resultats des matchs !</h1>
-              <a href="soccer/league.php?soccerSeasonID=467" class="button is-medium is-success is-outlined is-rounded"><i class="fas fa-plus"></i>&nbsp;Voir</i></a>
+              <a href="soccer/league?soccerSeasonID=467" class="button is-medium is-success is-outlined is-rounded"><i class="fas fa-plus"></i>&nbsp;Voir</i></a>
           </div>
         </div>
         <div class="column">
@@ -58,7 +58,7 @@ include("_include/nav.php");
             <i class="fas fa-shield-alt fa-7x"></i><br><br>
             <h1 class="title is-4">Equipes</h1>
             <h1 class="subtitle is-4">Suivez votre équipe favorite et toutes ses statistiques !</h1>
-            <a href="soccer/team.php?teamID=http://api.football-data.org/v1/teams/524" class="button is-medium is-success is-outlined is-rounded"><i class="fas fa-plus"></i>&nbsp;Voir</i></a>
+            <a href="soccer/team?teamID=http://api.football-data.org/v1/teams/524" class="button is-medium is-success is-outlined is-rounded"><i class="fas fa-plus"></i>&nbsp;Voir</i></a>
           </div>
         </div>
       </div>

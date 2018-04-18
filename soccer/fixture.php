@@ -31,7 +31,7 @@ include("../_include/nav.php");
         <?php echo $fixture->fixture->homeTeamName.' - '.$fixture->fixture->awayTeamName; ?>
       </h1>
       <h1 class="subtitle is-4">
-        <?php echo $matchDate.' - <a href="http://localhost/soccer/championnat.php?soccerSeasonID='.$competiton->id.'">'.$competiton->caption.'</a>'; ?>
+        <?php echo $matchDate.' - <a href="http://localhost/soccer/championnat?soccerSeasonID='.$competiton->id.'">'.$competiton->caption.'</a>'; ?>
       </h1>
     </div>
     <div class="hero-footer">
@@ -139,15 +139,15 @@ include("../_include/nav.php");
                   <i class="far fa-check-circle"></i>
                 </a>
                 <hr style="margin: 3px 0px 3px 0px;">
-                <a href="../soccer/fixture.php?fixtureID='.$fixture->head2head->lastWinHomeTeam->_links->self->href.'" class="tooltip" data-tooltip="Plus">
+                <a href="../soccer/fixture?fixtureID='.$fixture->head2head->lastWinHomeTeam->_links->self->href.'" class="tooltip" data-tooltip="Plus">
                   <i class="far fa-plus-square"></i>
                 </a>
               </div>
               <div class="is-divider-vertical" data-content="" style="padding:0px 3px 0px 3px;"></div>
               <div class="column is-4">
-                <p class="'.$homeWon.'"><a href="../soccer/team.php?teamID='.$fixture->head2head->lastWinHomeTeam->_links->homeTeam->href.'"><strong>'.$fixture->head2head->lastWinHomeTeam->homeTeamName.'</strong></a></p>
+                <p class="'.$homeWon.'"><a href="../soccer/team?teamID='.$fixture->head2head->lastWinHomeTeam->_links->homeTeam->href.'"><strong>'.$fixture->head2head->lastWinHomeTeam->homeTeamName.'</strong></a></p>
                 <hr style="margin: 3px 0px 3px 0px;">
-                <p class="'.$awayWon.'"><a href="../soccer/team.php?teamID='.$fixture->head2head->lastWinHomeTeam->_links->awayTeam->href.'"><strong>'.$fixture->head2head->lastWinHomeTeam->awayTeamName.'</strong></a></p>
+                <p class="'.$awayWon.'"><a href="../soccer/team?teamID='.$fixture->head2head->lastWinHomeTeam->_links->awayTeam->href.'"><strong>'.$fixture->head2head->lastWinHomeTeam->awayTeamName.'</strong></a></p>
               </div>
               <div class="column" style="text-align: center;">
                 <p class="'.$homeWon.'"><strong>'.$fixture->head2head->lastWinHomeTeam->result->goalsHomeTeam.'</strong></p>
@@ -199,15 +199,15 @@ include("../_include/nav.php");
                 <i class="far fa-check-circle"></i>
               </a>
               <hr style="margin: 3px 0px 3px 0px;">
-              <a href="../soccer/fixture.php?fixtureID='.$fixture->head2head->lastWinHomeTeam->_links->self->href.'" class="tooltip" data-tooltip="Plus">
+              <a href="../soccer/fixture?fixtureID='.$fixture->head2head->lastWinHomeTeam->_links->self->href.'" class="tooltip" data-tooltip="Plus">
                 <i class="far fa-plus-square"></i>
               </a>
             </div>
             <div class="is-divider-vertical" data-content="" style="padding:0px 3px 0px 3px;"></div>
             <div class="column is-4">
-              <p class="'.$homeWon.'"><a href="../soccer/team.php?teamID='.$fixture->head2head->lastWinHomeTeam->_links->homeTeam->href.'"><strong>'.$fixture->head2head->lastWinHomeTeam->homeTeamName.'</strong></a></p>
+              <p class="'.$homeWon.'"><a href="../soccer/team?teamID='.$fixture->head2head->lastWinHomeTeam->_links->homeTeam->href.'"><strong>'.$fixture->head2head->lastWinHomeTeam->homeTeamName.'</strong></a></p>
               <hr style="margin: 3px 0px 3px 0px;">
-              <p class="'.$awayWon.'"><a href="../soccer/team.php?teamID='.$fixture->head2head->lastWinHomeTeam->_links->awayTeam->href.'"><strong>'.$fixture->head2head->lastWinHomeTeam->awayTeamName.'</strong></a></p>
+              <p class="'.$awayWon.'"><a href="../soccer/team?teamID='.$fixture->head2head->lastWinHomeTeam->_links->awayTeam->href.'"><strong>'.$fixture->head2head->lastWinHomeTeam->awayTeamName.'</strong></a></p>
             </div>
             <div class="column" style="text-align: center;">
               <p class="'.$homeWon.'"><strong>'.$fixture->head2head->lastWinHomeTeam->result->goalsHomeTeam.'</strong></p>
@@ -266,15 +266,15 @@ include("../_include/nav.php");
                   <i class="far fa-check-circle"></i>
                 </a>
                 <hr style="margin: 3px 0px 3px 0px;">
-                <a href="../soccer/fixture.php?fixtureID='.$fixture->head2head->lastWinAwayTeam->_links->self->href.'" class="tooltip" data-tooltip="Plus">
+                <a href="../soccer/fixture?fixtureID='.$fixture->head2head->lastWinAwayTeam->_links->self->href.'" class="tooltip" data-tooltip="Plus">
                   <i class="far fa-plus-square"></i>
                 </a>
               </div>
               <div class="is-divider-vertical" data-content="" style="padding:0px 3px 0px 3px;"></div>
               <div class="column is-4">
-                <p class="'.$homeWon.'"><a href="../soccer/team.php?teamID='.$fixture->head2head->lastWinAwayTeam->_links->homeTeam->href.'"><strong>'.$fixture->head2head->lastWinAwayTeam->homeTeamName.'</strong></a></p>
+                <p class="'.$homeWon.'"><a href="../soccer/team?teamID='.$fixture->head2head->lastWinAwayTeam->_links->homeTeam->href.'"><strong>'.$fixture->head2head->lastWinAwayTeam->homeTeamName.'</strong></a></p>
                 <hr style="margin: 3px 0px 3px 0px;">
-                <p class="'.$awayWon.'"><a href="../soccer/team.php?teamID='.$fixture->head2head->lastWinAwayTeam->_links->awayTeam->href.'"><strong>'.$fixture->head2head->lastWinAwayTeam->awayTeamName.'</strong></a></p>
+                <p class="'.$awayWon.'"><a href="../soccer/team?teamID='.$fixture->head2head->lastWinAwayTeam->_links->awayTeam->href.'"><strong>'.$fixture->head2head->lastWinAwayTeam->awayTeamName.'</strong></a></p>
               </div>
               <div class="column" style="text-align: center;">
                 <p class="'.$homeWon.'"><strong>'.$fixture->head2head->lastWinAwayTeam->result->goalsHomeTeam.'</strong></p>
@@ -326,15 +326,15 @@ include("../_include/nav.php");
                   <i class="far fa-check-circle"></i>
                 </a>
                 <hr style="margin: 3px 0px 3px 0px;">
-                <a href="../soccer/fixture.php?fixtureID='.$fixture->head2head->lastAwayWinAwayTeam->_links->self->href.'" class="tooltip" data-tooltip="Plus">
+                <a href="../soccer/fixture?fixtureID='.$fixture->head2head->lastAwayWinAwayTeam->_links->self->href.'" class="tooltip" data-tooltip="Plus">
                   <i class="far fa-plus-square"></i>
                 </a>
               </div>
               <div class="is-divider-vertical" data-content="" style="padding:0px 3px 0px 3px;"></div>
               <div class="column is-4">
-                <p class="'.$homeWon.'"><a href="../soccer/team.php?teamID='.$fixture->head2head->lastAwayWinAwayTeam->_links->homeTeam->href.'"><strong>'.$fixture->head2head->lastWinAwayTeam->homeTeamName.'</strong></a></p>
+                <p class="'.$homeWon.'"><a href="../soccer/team?teamID='.$fixture->head2head->lastAwayWinAwayTeam->_links->homeTeam->href.'"><strong>'.$fixture->head2head->lastWinAwayTeam->homeTeamName.'</strong></a></p>
                 <hr style="margin: 3px 0px 3px 0px;">
-                <p class="'.$awayWon.'"><a href="../soccer/team.php?teamID='.$fixture->head2head->lastAwayWinAwayTeam->_links->awayTeam->href.'"><strong>'.$fixture->head2head->lastWinAwayTeam->awayTeamName.'</strong></a></p>
+                <p class="'.$awayWon.'"><a href="../soccer/team?teamID='.$fixture->head2head->lastAwayWinAwayTeam->_links->awayTeam->href.'"><strong>'.$fixture->head2head->lastWinAwayTeam->awayTeamName.'</strong></a></p>
               </div>
               <div class="column" style="text-align: center;">
                 <p class="'.$homeWon.'"><strong>'.$fixture->head2head->lastAwayWinAwayTeam->result->goalsHomeTeam.'</strong></p>

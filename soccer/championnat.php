@@ -120,15 +120,15 @@ include("../_include/nav.php");
                       <i class="far fa-clock"></i>
                     </a>
                     <hr style="margin: 3px 0px 3px 0px;">
-                    <a href="../soccer/fixture.php?fixtureID='.$competitionFixtures['fixtures'][$pos]['_links']['self']['href'].'" class="tooltip" data-tooltip="Plus">
+                    <a href="../soccer/fixture?fixtureID='.$competitionFixtures['fixtures'][$pos]['_links']['self']['href'].'" class="tooltip" data-tooltip="Plus">
                       <i class="far fa-plus-square"></i>
                     </a>
                   </div>
                   <div class="is-divider-vertical" data-content="" style="padding:0px 3px 0px 3px;"></div>
                   <div class="column is-8">
-                    <p><a href="../soccer/team.php?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['homeTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['homeTeamName'].'</strong></a></p>
+                    <p><a href="../soccer/team?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['homeTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['homeTeamName'].'</strong></a></p>
                     <hr style="margin: 3px 0px 3px 0px;">
-                    <p><a href="../soccer/team.php?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['awayTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['awayTeamName'].'</strong></a></p>
+                    <p><a href="../soccer/team?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['awayTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['awayTeamName'].'</strong></a></p>
                   </div>
                   <div class="column" style="text-align: center;">
                     <p><time>'.$matchDate.'</time></p>
@@ -164,19 +164,19 @@ include("../_include/nav.php");
               <div class="box">
                 <div class="columns is-mobile">
                   <div class="column is-1" style="text-align: center;">
-                    <a href="../channel/bein.php" target="_blank" class="tooltip" data-tooltip="Regarder le match">
+                    <a href="../channel/bein" target="_blank" class="tooltip" data-tooltip="Regarder le match">
                       <i class="far fa-play-circle"></i>
                     </a>
                     <hr style="margin: 3px 0px 3px 0px;">
-                    <a href="../soccer/fixture.php?fixtureID='.$competitionFixtures['fixtures'][$pos]['_links']['self']['href'].'" class="tooltip" data-tooltip="Plus">
+                    <a href="../soccer/fixture?fixtureID='.$competitionFixtures['fixtures'][$pos]['_links']['self']['href'].'" class="tooltip" data-tooltip="Plus">
                       <i class="far fa-plus-square"></i>
                     </a>
                   </div>
                   <div class="is-divider-vertical" data-content="" style="padding:0px 3px 0px 3px;"></div>
                   <div class="column is-8">
-                    <p class="'.$homeWon.'"><a href="../soccer/team.php?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['homeTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['homeTeamName'].'</strong></a></p>
+                    <p class="'.$homeWon.'"><a href="../soccer/team?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['homeTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['homeTeamName'].'</strong></a></p>
                     <hr style="margin: 3px 0px 3px 0px;">
-                    <p class="'.$awayWon.'"><a href="../soccer/team.php?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['awayTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['awayTeamName'].'</strong></a></p>
+                    <p class="'.$awayWon.'"><a href="../soccer/team?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['awayTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['awayTeamName'].'</strong></a></p>
                   </div>
                   <div class="column" style="text-align: center;">
                     <p class="'.$homeWon.'"><strong>'.$homeGoals.'</strong></p>
@@ -216,15 +216,15 @@ include("../_include/nav.php");
                       <i class="far fa-check-circle"></i>
                     </a>
                     <hr style="margin: 3px 0px 3px 0px;">
-                    <a href="../soccer/fixture.php?fixtureID='.$competitionFixtures['fixtures'][$pos]['_links']['self']['href'].'" class="tooltip" data-tooltip="Plus">
+                    <a href="../soccer/fixture?fixtureID='.$competitionFixtures['fixtures'][$pos]['_links']['self']['href'].'" class="tooltip" data-tooltip="Plus">
                       <i class="far fa-plus-square"></i>
                     </a>
                   </div>
                   <div class="is-divider-vertical" data-content="" style="padding:0px 3px 0px 3px;"></div>
                   <div class="column is-8">
-                    <p class="'.$homeWon.'"><a href="../soccer/team.php?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['homeTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['homeTeamName'].'</strong></a></p>
+                    <p class="'.$homeWon.'"><a href="../soccer/team?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['homeTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['homeTeamName'].'</strong></a></p>
                     <hr style="margin: 3px 0px 3px 0px;">
-                    <p class="'.$awayWon.'"><a href="../soccer/team.php?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['awayTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['awayTeamName'].'</strong></a></p>
+                    <p class="'.$awayWon.'"><a href="../soccer/team?teamID='.$competitionFixtures['fixtures'][$pos]['_links']['awayTeam']['href'].'"><strong>'.$competitionFixtures['fixtures'][$pos]['awayTeamName'].'</strong></a></p>
                   </div>
                   <div class="column" style="text-align: center;">
                     <p class="'.$homeWon.'"><strong>'.$homeGoals.'</strong></p>
@@ -248,7 +248,7 @@ include("../_include/nav.php");
               for ($pos=0; $pos < $teamCount; $pos++) {
                 echo '
                   <article class="media">
-                    <a href="../soccer/team.php?teamID='.$competitionTeams['teams'][$pos]['_links']['self']['href'].'">
+                    <a href="../soccer/team?teamID='.$competitionTeams['teams'][$pos]['_links']['self']['href'].'">
                       <figure class="media-left">
                         <p class="image is-32x32">
                           <img src="'.$competitionTeams['teams'][$pos]['crestUrl'].'">
@@ -257,7 +257,7 @@ include("../_include/nav.php");
                       <div class="media-content">
                         <div class="content">
                           <p>
-                            <a href="../soccer/team.php?teamID='.$competitionTeams['teams'][$pos]['_links']['self']['href'].'"><strong>'.$competitionTeams['teams'][$pos]['name'].'</strong></a>
+                            <a href="../soccer/team?teamID='.$competitionTeams['teams'][$pos]['_links']['self']['href'].'"><strong>'.$competitionTeams['teams'][$pos]['name'].'</strong></a>
                             <br>
                             <small>'.$competitionTeams['teams'][$pos]['code'].' - '.$competitionTeams['teams'][$pos]['shortName'].'</small>
                             <br>
@@ -312,7 +312,7 @@ include("../_include/nav.php");
                     echo '
                     <tr>
                       <th>'.$competitionTable['standing'][$pos]['position'].'</th>
-                      <td><a href="../soccer/team.php?teamID='.$competitionTable['standing'][$pos]['_links']['team']['href'].'">'.$competitionTable['standing'][$pos]['teamName'].'</a></td>
+                      <td><a href="../soccer/team?teamID='.$competitionTable['standing'][$pos]['_links']['team']['href'].'">'.$competitionTable['standing'][$pos]['teamName'].'</a></td>
                       <td>'.$competitionTable['standing'][$pos]['playedGames'].'</td>
                       <td>'.$competitionTable['standing'][$pos]['wins'].'</td>
                       <td>'.$competitionTable['standing'][$pos]['draws'].'</td>
@@ -351,7 +351,7 @@ include("../_include/nav.php");
                     echo '
                     <tr>
                       <th>'.$competitionTable['standing'][$pos]['position'].'</th>
-                      <td><a href="../soccer/team.php?teamID='.$competitionTable['standing'][$pos]['_links']['team']['href'].'">'.$competitionTable['standing'][$pos]['teamName'].'</a></td>
+                      <td><a href="../soccer/team?teamID='.$competitionTable['standing'][$pos]['_links']['team']['href'].'">'.$competitionTable['standing'][$pos]['teamName'].'</a></td>
                       <td>'.$competitionTable['standing'][$pos]['wins'].':'.$competitionTable['standing'][$pos]['draws'].':'.$competitionTable['standing'][$pos]['losses'].'</td>
                       <td>'.$competitionTable['standing'][$pos]['points'].'</td>
                     </tr>';
