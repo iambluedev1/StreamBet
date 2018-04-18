@@ -1,9 +1,6 @@
 <?php
-$soccerSeasonID = htmlspecialchars($_GET['soccerSeasonID']);
-
-
-
 $teamApiKey = 'http://api.football-data.org/v1/competitions/'.$soccerSeasonID;
+
 //competition
 $uri = $teamApiKey;
 $reqPrefs['http']['method'] = 'GET';
@@ -11,13 +8,15 @@ $reqPrefs['http']['header'] = 'X-Auth-Token: bd9e09e95e8948cc9f6d543c36225d48';
 $stream_context = stream_context_create($reqPrefs);
 $response = file_get_contents($uri, false, $stream_context);
 $competition = json_decode($response);
+
 //classement competition
-$uri = $teamApiKey.'/leagueTable';
-$reqPrefs['http']['method'] = 'GET';
-$reqPrefs['http']['header'] = 'X-Auth-Token: bd9e09e95e8948cc9f6d543c36225d48';
-$stream_context = stream_context_create($reqPrefs);
-$response = file_get_contents($uri, false, $stream_context);
-$competitionTable = json_decode($response, true);
+  $uri = $teamApiKey.'/leagueTable';
+  $reqPrefs['http']['method'] = 'GET';
+  $reqPrefs['http']['header'] = 'X-Auth-Token: bd9e09e95e8948cc9f6d543c36225d48';
+  $stream_context = stream_context_create($reqPrefs);
+  $response = file_get_contents($uri, false, $stream_context);
+  $competitionTable = json_decode($response, true);
+
 //fixtures competition
 $uri = $teamApiKey.'/fixtures?matchday='.$competition->currentMatchday;
 $reqPrefs['http']['method'] = 'GET';
@@ -40,21 +39,24 @@ $pageDesc = 'Toutes les infos des matchs de '.$competition->caption;
 include("../_include/head.php");
 include("../_include/nav.php");
 ?>
-<section class="hero is-primary has-fade-in" style="padding-top: 50px;">
+<section class="hero is-success has-fade-in" style="padding-top: 50px;">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
         <i class="fas fa-trophy"></i>
         <?php echo $competition->caption; ?>
       </h1>
+      <h2 class="subtitle">
+        Retrouvez le calendrier des Matchs de <?php echo $competition->caption; ?> !
+      </h2>
     </div>
   </div>
-  <div class="hero-foot">
+  <div class="hero-footer">
     <div class="container">
-      <nav class="level is-mobile">
+      <nav class="level">
         <div class="level-item has-text-centered">
           <div>
-            <p class="heading">Journée :</p>
+            <p class="heading">Manche :</p>
             <p class="title"><?php echo $competition->currentMatchday.'/'.$competition->numberOfMatchdays; ?></p>
           </div>
         </div>
@@ -74,32 +76,26 @@ include("../_include/nav.php");
       <div class="container">
         <progress class="progress" value="<?php echo $competition->currentMatchday ?>" max="<?php echo $competition->numberOfMatchdays ?>"></progress>
       </div>
-      <br>
-      <div class="tabs is-centered is-boxed">
-        <ul>
-          <li id="matchs-tab" class="is-active">
-            <a onclick="switchCatTab('matchs')">
-              <span class="icon is-small"><i class="fas fa-futbol"></i></span>
-              <span>Matchs</span>
-            </a>
-          </li>
-          <li id="leagueTable-tab">
-            <a onclick="switchCatTab('leagueTable')">
-              <span class="icon is-small"><i class="fas fa-trophy"></i></span>
-              <span>Classement</span>
-            </a>
-          </li>
-          <li id="teams-tab">
-              <a onclick="switchCatTab('teams')">
-                <span class="icon is-small"><i class="fas fa-shield-alt"></i></span>
-                <span>Equipes</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
-  </section>
+    <br>
+    <div class="tabs is-centered is-boxed">
+      <ul>
+        <li id="matchs-tab" class="is-active">
+          <a onclick="switchCatTab('matchs')">
+            <span class="icon is-small"><i class="fas fa-futbol"></i></span>
+            <span>Matchs</span>
+          </a>
+        </li>
+        <li id="teams-tab">
+            <a onclick="switchCatTab('teams')">
+              <span class="icon is-small"><i class="fas fa-shield-alt"></i></span>
+              <span>Equipes</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+  </div>
+</section>
 <section class="container">
   <br>
   <article id="matchs" class="message is-dark">
@@ -271,96 +267,6 @@ include("../_include/nav.php");
               ?>
             </div>
           </article>
-          <article id="leagueTable" class="message is-dark hidden">
-            <div class="message-header">
-              <h1 class="title is-4 has-text-white">Classement:</h1>
-            </div>
-            <div class="message-body">
-              <table class="table is-striped is-hoverable is-hidden-touch">
-                <thead>
-                  <tr>
-                    <th>Pos</th>
-                    <th>Equipe</th>
-                    <th>Joués</th>
-                    <th>Victoires</th>
-                    <th>Nuls</th>
-                    <th>Défaites</th>
-                    <th>Goals Marqués</th>
-                    <th>Goals Encaissés</th>
-                    <th>Goal Average</th>
-                    <th>Points</th>
-                  </tr>
-                </thead>
-                <tfoot>
-                  <tr>
-                    <th>Pos</th>
-                    <th>Equipe</th>
-                    <th>Joués</th>
-                    <th>Victoires</th>
-                    <th>Nuls</th>
-                    <th>Défaites</th>
-                    <th>Goals Marqués</th>
-                    <th>Goals Encaissés</th>
-                    <th>Goal Average</th>
-                    <th>Points</th>
-                  </tr>
-                </tfoot>
-                <tbody>
-                  <?php
-                  // Classement de la Compétition
-                  for ($pos=0; $pos < $competition->numberOfTeams; $pos++) {
-                    echo '
-                    <tr>
-                      <th>'.$competitionTable['standing'][$pos]['position'].'</th>
-                      <td><a href="../soccer/team?teamID='.$competitionTable['standing'][$pos]['_links']['team']['href'].'">'.$competitionTable['standing'][$pos]['teamName'].'</a></td>
-                      <td>'.$competitionTable['standing'][$pos]['playedGames'].'</td>
-                      <td>'.$competitionTable['standing'][$pos]['wins'].'</td>
-                      <td>'.$competitionTable['standing'][$pos]['draws'].'</td>
-                      <td>'.$competitionTable['standing'][$pos]['losses'].'</td>
-                      <td>'.$competitionTable['standing'][$pos]['goals'].'</td>
-                      <td>'.$competitionTable['standing'][$pos]['goalsAgainst'].'</td>
-                      <td>'.$competitionTable['standing'][$pos]['goalDifference'].'</td>
-                      <td>'.$competitionTable['standing'][$pos]['points'].'</td>
-                    </tr>';
-                  }
-                  ?>
-                </tbody>
-              </table>
-              <!-- MOBILE TABLE -->
-              <table class="table is-striped is-hoverable is-hidden-desktop">
-                <thead>
-                  <tr>
-                    <th>Pos</th>
-                    <th>Equipe</th>
-                    <th>V:N:D</th>
-                    <th>Points</th>
-                  </tr>
-                </thead>
-                <tfoot>
-                  <tr>
-                    <th>Pos</th>
-                    <th>Equipe</th>
-                    <th>V:N:D</th>
-                    <th>Points</th>
-                  </tr>
-                </tfoot>
-                <tbody>
-                  <?php
-                  // Classement de la Compétition
-                  for ($pos=0; $pos < $competition->numberOfTeams; $pos++) {
-                    echo '
-                    <tr>
-                      <th>'.$competitionTable['standing'][$pos]['position'].'</th>
-                      <td><a href="../soccer/team?teamID='.$competitionTable['standing'][$pos]['_links']['team']['href'].'">'.$competitionTable['standing'][$pos]['teamName'].'</a></td>
-                      <td>'.$competitionTable['standing'][$pos]['wins'].':'.$competitionTable['standing'][$pos]['draws'].':'.$competitionTable['standing'][$pos]['losses'].'</td>
-                      <td>'.$competitionTable['standing'][$pos]['points'].'</td>
-                    </tr>';
-                  }
-                  ?>
-                </tbody>
-              </table>
-          </article>
-        </div>
 </section>
 <script>
   function switchCatTab(type) {

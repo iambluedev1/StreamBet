@@ -42,40 +42,40 @@ function navbarBurgerToggle() {
           &nbsp;&nbsp;Matchs
         </a>
         <div class="navbar-dropdown is-boxed">
-          <a class="navbar-item has-text-weight-bold" href="/soccer/league?soccerSeasonID=467">
+          <a class="navbar-item has-text-weight-bold" href="/coupe/coupe-du-monde">
             <i class="fas fa-trophy"></i>&nbsp;
             Coupe du Monde
           </a>
-          <a class="navbar-item has-text-weight-bold" href="/soccer/league?soccerSeasonID=464">
+          <a class="navbar-item has-text-weight-bold" href="/coupe/champions-league">
             <i class="fas fa-trophy"></i>&nbsp;
             Champion's League
           </a>
           <hr class="navbar-divider">
-          <a class="navbar-item has-text-weight-bold" href="/soccer/league?soccerSeasonID=445">
+          <a class="navbar-item has-text-weight-bold" href="/championnat/premiere-league">
             Premiere League
           </a>
-          <a class="navbar-item has-text-weight-bold" href="/soccer/league?soccerSeasonID=455">
+          <a class="navbar-item has-text-weight-bold" href="/championnat/liga-santander">
             Liga Santander
           </a>
-          <a class="navbar-item has-text-weight-bold" href="/soccer/league?soccerSeasonID=450">
+          <a class="navbar-item has-text-weight-bold" href="/championnat/ligue-1">
             Ligue 1
           </a>
-          <a class="navbar-item has-text-weight-bold" href="/soccer/league?soccerSeasonID=451">
+          <a class="navbar-item has-text-weight-bold" href="/championnat/ligue-2">
             Ligue 2
           </a>
-          <a class="navbar-item has-text-weight-bold" href="/soccer/league?soccerSeasonID=456">
+          <a class="navbar-item has-text-weight-bold" href="/championnat/serie-a">
             Serie A
           </a>
-          <a class="navbar-item has-text-weight-bold" href="/soccer/league?soccerSeasonID=459">
+          <a class="navbar-item has-text-weight-bold" href="/championnat/serie-b">
             Serie B
           </a>
-          <a class="navbar-item has-text-weight-bold" href="/soccer/league?soccerSeasonID=452">
+          <a class="navbar-item has-text-weight-bold" href="/championnat/bundesligua-1">
             Bundesliga
           </a>
-          <a class="navbar-item has-text-weight-bold" href="/soccer/league?soccerSeasonID=453">
+          <a class="navbar-item has-text-weight-bold" href="/championnat/bundesligua-2">
             Bundesliga 2
           </a>
-          <a class="navbar-item has-text-weight-bold" href="/soccer/league?soccerSeasonID=457">
+          <a class="navbar-item has-text-weight-bold" href="/championnat/liga-nos">
             Liga NOS
           </a>
         </div>
